@@ -77,22 +77,20 @@ function showTask(){
 }
 showTask();
 
-// function checkExpiredTasks() {
-//     let tasks = listContainer.getElementsByTagName("li");
+function checkExpiredTasks() {
+    let tasks = listContainer.getElementsByTagName("li");
 
-//     for (let task of tasks) {
-//         let taskText = task.innerHTML.split(' - Due: ')[1].split(" ");
-//         let dueDate = taskText[0];  // Extract mo ang due date
-//         let dueTime = taskText[1];  // Extract mo ang due time
+    for (let task of tasks) {
+        let taskText = task.innerHTML.split(' - Due: ')[1].split(" ");
+        let dueDate = taskText[0];
+        let dueTime = taskText[1]; 
 
-//         // Combine due date & time into a single string and create a Date object
-//         let taskDueDateTime = new Date(`${dueDate}T${dueTime}`);
+        let taskDueDateTime = new Date(`${dueDate} ${dueTime}`);
 
-//         let currentDate = new Date();  // kwaa current date & time
+        let currentDate = new Date();
 
-//         // If current date is past the due date & time sng task, expired na
-//         if (currentDate > taskDueDateTime) {
-//             task.classList.add("expired");  // Add a class to mark it as expired
-//         }
-//     }
-// }
+        if (currentDate > taskDueDateTime) {
+            task.classList.add("expired");
+        }
+    }
+}
